@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\begin{document}
+
+Let the set of prime positive integers \(\mathbb{P}\) be defined as:
+
+$\mathbb{P}$: $\{x \in \mathbb{N}^* \mid \forall y \in \mathbb{N}^* ((y \neq 1) \land (y \neq x)) \Rightarrow (y \nmid x) \}$.\\
+
+\textbf{Prop. 1:} \(\text{Card}(\mathbb{P})\) is infinite.\\
+
+\textbf{Prop. 2:} We can partition the set of positive prime numbers by posing:
+
+\[
+\begin{aligned}
+\makebox[0pt][l]{\hspace{-3.8cm}\(\mathbb{P}_1 = \{x \in \mathbb{P} \mid \exists m \in \mathbb{N}^* , x = 4m + 1\}\)}\\
+\makebox[0pt][l]{\hspace{-3.8cm}\(\mathbb{P}_2 = \{x \in \mathbb{P} \mid \exists m \in \mathbb{N}^* , x = 4m + 3\}\)}\\
+\makebox[0pt][l]{\hspace{-3.8cm}\(\mathbb{P} = \mathbb{P}_1 \cup \mathbb{P}_2 \cup \{2\}\)}
+\end{aligned}
+\]
+
+\textbf{Prop. 3:} \(\text{Card}(\mathbb{P}_2)\) is infinite.
+
+\begin{proof}
+If $\mathbb{P}_2$ is finite, we can consider its largest element. Then $\exists \rho_k \in \mathbb{P}$ such that $\rho_k = \max \{ x \in \mathbb{P} \mid \exists m \in \mathbb{N}^*, \, x = 4m + 3 \}$.
+The subscript ``$k$'' means that $\rho_k$ is the $k$th prime number if arranged in ascending order ($\rho_1 = 2$, $\rho_2 = 3$, $\rho_3 = 5$, etc.).
+Let $N_k$ be defined by:
+\[
+\begin{aligned}
+N_k &= (2^2 \cdot 3 \cdot \ldots \cdot p_{k-1} \cdot p_k) - 1 \\
+&= (4 \cdot \prod_{i=2}^{k} p_i) - 1
+\end{aligned}
+\]
+
+The product $\prod_{i=1}^{k} p_i$ can be written as $4m + r$, where $m$ is some integer and $r$ is either 1 or 3. Because each prime $p_i$ (except 2) is either of the form $4n+1$ or $4n+3$, their product will always be of the form $4m+1$ or $4m+3$. Then,
+\[
+\begin{aligned}
+N_k &= (4 \cdot (4m + r)) - 1 \\
+    &= (16m + 4r) - 1 \\
+    &= 16m + 4r - 1
+\end{aligned}
+\]
+
+Let's consider the two possible cases for \( r \):
+
+\textbf{Case 1:} If \( r = 1 \) and \( N_k = 16m + 4 \cdot 1 - 1 = 16m + 3 \)\\
+\hangindent=1.5em \textbf{Case 2:} If \( r = 3 \) and \( N_k = 16m + 4 \cdot 3 - 1 = 16m + 11 \), and since \( 16m \equiv 0 \pmod{4} \) and \( 11 \equiv 3 \pmod{4} \), \( 16m + 11 \equiv 0 + 3 \equiv 3 \pmod{4} \).\\
+
+In both cases, we can see that \( N_k \) is of the form \( 4m + 3 \) for some integer \( m \).
+
+But, by construction,  any prime factor of \(N_k\) must be greater than \(p_k\), i.e. \(\forall \rho \in \mathbb{P} \ (\rho \mid N_k) \Rightarrow \rho > \rho_k\).
+
+Thus \(N_k\) must have at least one prime factor of the form 4m+3 which is greater than \(p_k\). This contradicts our assumption that \(p_k\) was the largest prime number dividing \(N_k\).
+
+\end{proof}
+
+
+\end{document}
