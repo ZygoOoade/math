@@ -50,7 +50,7 @@ In both cases, we can see that \( N_k \) is of the form \( 4m + 3 \) for some in
 
 But, by construction,  any prime factor of \(N_k\) must be greater than \(p_k\), i.e. \(\forall \rho \in \mathbb{P} \ (\rho \mid N_k) \Rightarrow \rho > \rho_k\).
 
-Thus \(N_k\) must have at least one prime factor of the form 4m+3 which is greater than \(p_k\). This contradicts our assumption that \(p_k\) was the largest prime number dividing \(N_k\).
+Thus \(N_k\) must have at least one prime factor of the form \( 4m + 3 \) which is greater than \(p_k\). This contradicts our assumption that \(p_k\) was the largest prime number dividing \(N_k\).
 
 \end{proof}
 
