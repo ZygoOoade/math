@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\[
+\boxed{
+    \forall a, b, c \in \mathbb{Z}^* \quad [(a \mid bc) \land \text{GCD}(a,b)=1] \Rightarrow a \mid c
+}
+\]
+
+\vspace{1cm} % Espace vertical
+
+Par définition de la divisibilité :
+\[ a \mid bc \Leftrightarrow \exists k \in \mathbb{Z} \text{  } ak = bc \]
+
+Par le théorème de Bézout, puisque $\text{GCD}(a,b)=1$
+\[ \exists u, v \in \mathbb{Z} \quad \text{  } a \cdot u + b \cdot v = 1 \]
+\[ c(a \cdot u + b \cdot v) = c \]
+\[ a \cdot u \cdot c + b \cdot c \cdot v = c \]
+
+En substituant $bc$ par $ak$ (cf. ligne 1) :
+\[ a \cdot u \cdot c + (ak) \cdot v = c \]
+
+On factorise par $a$ :
+\[ a (u \cdot c + k \cdot v) = c \]
+
+Or, comme $u, c, k, v$ sont dans $\mathbb{Z}$, et que $c$ est non nul \[ (u \cdot c + k \cdot v) \in \mathbb{Z}^* \]
+
+\[ (a \mid c) \quad \blacksquare \]
+
+\end{document}
