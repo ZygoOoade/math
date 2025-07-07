@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=1in]{geometry}
+\newcommand{\subst}[2]{#1 \backslash #2}
+
+\begin{document}
+
+Définition du \textbf{syllogisme disjonctif} :
+
+$$
+\text{Syll. Disj.} \quad \frac{P \lor Q}{\neg P \implies Q}
+$$
+
+\vspace{1em}
+\begin{tabular}{l p{0.8\textwidth}}
+    \textbf{Propriété 0.1} : & $\forall x, y \in \mathbb{C}, \quad (x - y)(x + y) = x^2 - y^2$ \\
+    \textbf{Propriété 0.2} : & $\forall a \in \mathbb{Z}, \quad (a \equiv 0 \pmod 3) \lor (a-1 \equiv 0 \pmod 3) \lor (a+1 \equiv 0 \pmod 3)$ \\
+\end{tabular}
+\vspace{2em}
+
+\begin{center}
+\textbf{Théorème.} Si $3$ ne divise pas $a$, alors $3$ divise $a^2 - 1$.
+\end{center}
+
+\noindent\textbf{Remarques sur la notation utilisée :}
+\begin{itemize}
+    \item En notation modulaire standard, ce théorème s'énonce : si $a \not\equiv 0 \pmod{3}$, alors $a^2 - 1 \equiv 0 \pmod{3}$.
+    
+    \item Dans la preuve qui suit, nous utiliserons la notation prédicative suivante :
+    $$\text{mod}(a, p, r) \quad \text{signifie} \quad a \equiv r \pmod{p}$$
+    c'est-à-dire que $a$ divisé par $p$ a pour reste $r$.
+    
+    \item Ainsi, "$3$ ne divise pas $a$" s'écrira $\neg\text{mod}(a, 3, 0)$ et "$3$ divise $a^2-1$" s'écrira $\text{mod}(a^2-1, 3, 0)$.
+\end{itemize}
+
+\vspace{1em}
+
+
+\begin{center}
+\textbf{Preuve}
+\end{center}
+
+\begin{align*}
+\varphi_1 \quad & \forall a, b \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a, p, 0) \implies \text{mod}(a \times b, p, 0) && \\
+\varphi_2 \quad & \forall a \in \mathbb{Z} \; \text{mod}(a, 3, 0) \lor \text{mod}(a-1, 3, 0) \lor \text{mod}(a+1, 3, 0) && \textcolor{Gray}{\text{Propriété 0.2}} \\
+\varphi_3 \quad & \forall a, b \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a - 1, p, 0) \implies \text{mod}((a - 1) \times b, p, 0) && \textcolor{Gray}{\varphi_1[\subst{a}{a - 1}]} \\
+\varphi_4 \quad & \forall a \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a - 1, p, 0) \implies \text{mod}((a - 1) \times (a + 1), p, 0) && \textcolor{Gray}{\varphi_3[\subst{b}{a + 1}]} \\
+\varphi_5 \quad & \forall a \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a - 1, p, 0) \implies \text{mod}(a^2 - 1, p, 0) && \textcolor{Gray}{\varphi_4, \text{Propriété 0.1}} \\
+\varphi_6 \quad & \forall a, b \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a + 1, p, 0) \implies \text{mod}((a + 1) \times b, p, 0) && \textcolor{Gray}{\varphi_1[\subst{a}{a + 1}]} \\
+\varphi_7 \quad & \forall a \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a + 1, p, 0) \implies \text{mod}((a + 1) \times (a - 1), p, 0) && \textcolor{Gray}{\varphi_6[\subst{b}{a - 1}]} \\
+\varphi_8 \quad & \forall a \in \mathbb{Z} \, \forall p \in \mathbb{Z}^* \; \text{mod}(a + 1, p, 0) \implies \text{mod}(a^2 - 1, p, 0) && \textcolor{Gray}{\varphi_7, \text{Propriété 0.1}} \\[1em] % Espace pour séparer les blocs logiques
+\varphi_9 \quad & \forall a \in \mathbb{Z} \; \neg\text{mod}(a, 3, 0) \implies [\text{mod}(a - 1, 3, 0) \lor \text{mod}(a + 1, 3, 0)] && \textcolor{Gray}{\varphi_2, \text{Syll. Disj.}} \\
+\varphi_{10} \quad & \neg\text{mod}(a, 3, 0) && \textcolor{Gray}{\text{Hypothèse }} \\
+\varphi_{11} \quad & \text{mod}(a - 1, 3, 0) \lor \text{mod}(a + 1, 3, 0) && \textcolor{Gray}{\varphi_9(\forall e), \varphi_{10} (\implies e)} \\[1em] % Remplacement de \hline par un espacement
+\varphi_{12a} \quad & \quad \text{mod}(a - 1, 3, 0) && \textcolor{Gray}{\text{Hypothèse (Cas 1)}} \\
+\varphi_{12b} \quad & \quad \text{mod}(a - 1, 3, 0) \implies \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\varphi_5(\forall e)} \\
+\varphi_{12c} \quad & \quad \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\varphi_{12a}, \varphi_{12b} (\implies e)} \\[1em] % Remplacement de \hline par un espacement
+\varphi_{13a} \quad & \quad \text{mod}(a + 1, 3, 0) && \textcolor{Gray}{\text{Hypothèse (Cas 2)}} \\
+\varphi_{13b} \quad & \quad \text{mod}(a + 1, 3, 0) \implies \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\varphi_8(\forall e)} \\
+\varphi_{13c} \quad & \quad \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\varphi_{13a}, \varphi_{13b} (\implies e)} \\[1em] % Remplacement de \hline par un espacement
+\varphi_{14} \quad & \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\varphi_{11}, \varphi_{12c}, \varphi_{13c}  \lor e} \\
+\varphi_{15} \quad & \neg\text{mod}(a, 3, 0) \implies \text{mod}(a^2 - 1, 3, 0) && \textcolor{Gray}{\text{Décharge de l'hypothèse } \varphi_{10}} \\
+\varphi_{16} \quad & \forall a \in \mathbb{Z} \, [\neg\text{mod}(a, 3, 0) \implies \text{mod}(a^2 - 1, 3, 0)] && \textcolor{Gray}{\varphi_{15}(\forall i)}
+\end{align*}
+
+\end{document}
