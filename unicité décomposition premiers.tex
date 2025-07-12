@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath} % For align*, \text, \operatorname
+\usepackage{amsfonts} % For \mathbb{Z}
+\usepackage{stmaryrd}
+
+\begin{document}
+
+
+
+On peut exprimer l'unicité de la décomposition sans imposer d'ordre sur les premiers comme suit :
+
+\[
+\forall x \in \mathbb{Z}_{\geq 2}, \exists! f : \mathcal{P} \to \mathbb{N} \text{ à support fini tel que } x = \prod_{p \in \mathcal{P}} p^{f(p)}
+\]
+
+où $\mathcal{P}$ est l'ensemble des nombres premiers et "support fini" signifie que $f(p) = 0$ sauf pour un nombre fini de $p$.
+
+Voici ce qu'il faut prouver
+$$\forall x \in \mathbb{Z}_{\geq 2}, \exists n \in \mathbb{N}^*, \exists (p_1,...,p_n,e_1,...,e_n) \in \mathbb{N}^{2n} :$$
+$$\left[\bigwedge_{i=1}^n \text{PRM}(p_i) \land \bigwedge_{i \neq j} p_i \neq p_j \land x = \prod_{i=1}^n p_i^{e_i}\right]$$
+$$\land$$
+$$\forall m \in \mathbb{N}^*, \forall (q_1,...,q_m,f_1,...,f_m) \in \mathbb{N}^{2m} :$$
+$$\left[\bigwedge_{j=1}^m \text{PRM}(q_j) \land \bigwedge_{i \neq j} q_i \neq q_j \land x = \prod_{j=1}^m q_j^{f_j}\right]$$
+$$\Rightarrow$$
+$$\left[n = m \land \forall i \in [1,n], \exists j \in [1,m] : (p_i = q_j \land e_i = f_j)\right]$$
+
+Pour faire la démonstration, on peut procéder de plusieurs manières. Par exemple, on peut imposer un ordre sur la décomposition
+\begin{align*}
+\forall i \in \llbracket 1, n-1 \rrbracket, \rho_i < \rho_{i+1}, 
+\text{ et / ou } q_i < q_{i+1}
+\end{align*}
+
+
+Sans imposer d'ordre et dans une approche semblable à celle évoquée plus haut, on peut tenter de montrer d'une part que le cardinal du support est le même $n = m$ et d'autre part qu'il existe une bijection $\sigma$ associant la première décomposition à la seconde :
+
+\begin{aligned}
+\exists \sigma : [1,n] \to [1,n],
+& \forall i : p_i = q_{\sigma(i)} \land e_i = f_{\sigma(i)}
+\end{aligned}
+
+
+
+\end{document}
